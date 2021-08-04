@@ -1,0 +1,23 @@
+rom下载： https://developers.google.com/android/images#flashtool
+
+1. 根据https://forum.xda-developers.com/t/tool-how-to-nexus-6p-bootloop-of-death-blod-workaround-flashable-zip.3819515/ 提示
+下载好对应的
+N5X-6P_BLOD_Workaround_Injector_Addon-AK3-signed.zip
+twrp-3.2.1-0-fbe-4core-angler.img (Nexus 6P)
+
+2. 把 angler-opm7.181205.001 ./flash-all.sh 了
+3. fastboot flash recovery twrp-3.2.1-0-fbe-4core-angler.img 
+4. Reboot your phone to recovery and tap Advanced, then ADB Sideload  这时会手机卡一会儿，不用管， adb devices已经显示是 sideload模式了
+5. adb sideload N5X-6P_BLOD_Workaround_Injector_Addon-AK3-signed.zip  执行会卡半分钟，等等，这个作用就是给boot分区和recovery分区打补丁， 
+6. reboot
+
+root：
+7. recovery adb 可用，推入supersu ： SuperSU-v2.82-201705271822.zip
+adb push SuperSU-v2.82-201705271822.zip /sdcard/Download/SuperSU-v2.82-201705271822.zip
+在recovery里面install， 重启， 
+
+【这种方式似乎root不行，刷了 SuperSU 后估计动了boot和recovery分区。】
+
+《 尝试另一种：先刷最新系统，再刷opm7.181205.001-boot.img， 再刷twrp-3.2.1-0-fbe-4core-angler.img, 再刷supersu。 opm7.181205.001-boot.img 似乎不起作用。》
+《尝试另一种：先刷最新系统，再刷8.0里面的boot与recovery是可以启动的，但是到了进入桌面的时候就重启到recovery了。》
+

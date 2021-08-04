@@ -1,0 +1,33 @@
+rom下载： https://developers.google.com/android/images#flashtool
+
+
+1. google image
+https://developers.google.com/android/images#angler
+angler-opr6.170623.019-factory-9fd72ad6.zip
+./flash-all.sh
+
+2. https://forum.xda-developers.com/t/guide-fix-for-nexus-6p-bootloop-of-death-8-22-android-o-working.3640279/ 中 *Downloads: 提到的第一个针对8.0版本的boot.img
+ Oreo4Cores.img 下载地址：https://www.dropbox.com/s/0idbfg670xp1x1c/Oreo4Cores.img?dl=0 
+fastboot flash boot Oreo4Cores.img
+
+3. 可有可无，刷一个4核适应的 recovery  https://www.xda-developers.com/nexus-6p-bootloop-fix/ 这里有提到可以用。不过整个连接是针对  N2G48B 版本的镜像的。
+fastboot flash recovery twrp3_1_1_4Cores.img
+
+3. 重启就好了。
+
+4. recovery adb 可用，推入supersu ： SuperSU-v2.82-201705271822.zip
+在recovery里面install， 重启， root已验证可正常使用
+
+ In the terminal, type "su" and grant it root access, then type "wm size 1080x1920", and finally, change the density "wm density 400". Personally, I like my density at 400, but you can expieriment with it. Lower density=Smaller items and text, Higher density=Bigger items and text. Also @Adithya FRK mentioned that you also want to put density in build.prop so apps display correctly. Change ro.sf.lcd_density=560 to your density, if you changed it.
+
+
+
+常用命令
+fastboot flash bootloader bootloader-angler-angler-03.84.img
+fastboot flash radio radio-angler-angler-03.88.img
+fastboot reboot-bootloader
+fastboot flash recovery recovery.img
+fastboot flash boot boot.img
+fastboot flash system system.img
+
+fastboot flash boot Oreo4Cores.img && fastboot flash recovery twrp3_1_1_4Cores.img
